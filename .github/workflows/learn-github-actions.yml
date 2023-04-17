@@ -20,8 +20,8 @@ jobs:
       
 
 #     - run: echo "test4" >> test.txt
-#     - run: git config --global user.name "Iker Ortiz"
-#     - run: git add -A
-#     - run: git commit -m "Auto updating"
-#     - run: git fetch origin master
-#     - run: git push origin main
+     - run: git config --global user.name "Iker Ortiz"
+     - run: git add -A
+     - run: git commit -m "Auto updating"
+     - run: git fetch origin master
+     - run: git push origin main
