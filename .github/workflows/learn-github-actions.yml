@@ -11,9 +11,6 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-  create-file:
-    runs-on: ubuntu-latest
-    steps:
     - name: Create file
       run: echo "Hello, world!" > myfile.txt
     - name: Commit and push changes
