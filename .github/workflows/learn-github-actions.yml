@@ -12,6 +12,7 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
       - run: echo "test4" >> README.md
+      - run: git config --global user.name "Iker Ortiz"
       - run: git add -A
       - run: git commit -m "Auto updating TODO.txt"
       - run: git fetch origin master
