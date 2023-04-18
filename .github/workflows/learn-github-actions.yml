@@ -23,5 +23,6 @@ jobs:
       - run: pip install virtualenv
       - run: virtualenv mypython
       - run: source mypython/bin/activate
+      - run: conda init bash
       - run: conda activate techdoc
 
