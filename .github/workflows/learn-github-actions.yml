@@ -22,5 +22,6 @@ jobs:
       - run: pip install virtualenv
       - run: virtualenv mypython
       - run: source mypython/bin/activate
+      - run: nom install -r requirements.txt
       - run: conda activate techdoc
 
