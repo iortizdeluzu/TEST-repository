@@ -33,5 +33,6 @@ jobs:
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
+      - run: ssh-keyscan atlas-edr.sw.ehu.es >> ~/.ssh/known_hosts
       - run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
 
