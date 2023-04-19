@@ -2,7 +2,7 @@ name: github-actions-learn
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 env:
-SSH_PRIVATE_KEY: ${EDR}
+SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 REMOTE_HOST: atlas-edr.sw.ehu.es
 REMOTE_USER: iortiz
 jobs:
