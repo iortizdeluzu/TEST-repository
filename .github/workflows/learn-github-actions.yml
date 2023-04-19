@@ -32,13 +32,13 @@ jobs:
       - run: mkdocs build
         #- run: touch .ssh/id_rsa
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
-        #- run: echo "y\n" | HOSTNAME=`hostname` ssh-keygen -t rsa -C "$HOSTNAME" -f "$HOME/.ssh/id_rsa" -P "" > .ssh/id_rsa.pub
+      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
+      #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
       #- run: |
       #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
       #       chmod 600 .ssh/id_rsa
