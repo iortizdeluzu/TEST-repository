@@ -32,4 +32,6 @@ jobs:
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
       - run: git push origin main
+      # Hasta aqui corre
+      - run: rsync -r sites/* ccadmin@cc.dipc.org:/var/www/vhosts/cc.dipc.org/httpdocs/computing_resources/
 
