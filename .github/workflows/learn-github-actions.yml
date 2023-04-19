@@ -23,14 +23,9 @@ jobs:
       - run: virtualenv mypython
       - run: source mypython/bin/activate
       - run: conda init bash
-      # Hasta aqui corre
-
       - run: python -m pip --version
       - run: pip install -r requirements.txt 
       # Hasta aqui corre
-      - run: conda env create -f environment.yml
-        #- run: conda activate techdoc
-
-
-        #      - run: conda activate techdoci
+      #
+      - run: mkdocs build
 
