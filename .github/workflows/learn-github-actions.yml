@@ -11,9 +11,8 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: npm install -g conda python3
-      - run: npm install g virtualenv
       - run: bats -v
-      - run: echo "Hello, world!" > myfile.txt
+      - run: echo "Hello, world!" >> myfile.txt
       - run: git config --global user.name "ikerortiluzu"
       - run: git config --global user.mail "iker.ortiz@dipc.org"
       - run: git add -A
@@ -24,5 +23,5 @@ jobs:
       - run: virtualenv mypython
       - run: source mypython/bin/activate
       - run: conda init bash
-      - run: conda activate techdoc
+        #      - run: conda activate techdoci
 
