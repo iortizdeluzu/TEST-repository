@@ -38,7 +38,8 @@ jobs:
              echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
              chmod 600 .ssh/id_rsa
              ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
-             sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+             sshpass -p "joderCONdipc123$%&" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+             #sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
         #- run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
   #env:
   #SSH_PRIVATE_KEY: ${{ secrets.EDR }}
