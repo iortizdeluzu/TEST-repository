@@ -32,6 +32,7 @@ jobs:
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
       - run: git push origin main
+      - run: touch .ssh/id_rsa
       # Hasta aqui corre
       - run: |
              echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
