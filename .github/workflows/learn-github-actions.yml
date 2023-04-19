@@ -38,11 +38,11 @@ jobs:
       - run: git push origin main
       # Hasta aqui corre
       - run: |
-    mkdir -p .ssh
-    echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
-    chmod 600 .ssh/id_rsa
-    ssh-keyscan -H $REMOTE_HOST >> .ssh/known_hosts
-    sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub $REMOTE_USER@$REMOTE_HOST
+             mkdir -p .ssh
+             echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
+             chmod 600 .ssh/id_rsa
+             ssh-keyscan -H $REMOTE_HOST >> .ssh/known_hosts
+             sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub $REMOTE_USER@$REMOTE_HOST
       
       
       
