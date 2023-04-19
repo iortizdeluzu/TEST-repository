@@ -32,6 +32,7 @@ jobs:
       - run: mkdocs build
         #- run: touch .ssh/id_rsa
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
+      - run: ls .ssh
       - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
       - run: git add -A
       - run: git commit -m "Auto updating"
