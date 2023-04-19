@@ -38,7 +38,7 @@ jobs:
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
       #- run: |
       #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
       #       chmod 600 .ssh/id_rsa
