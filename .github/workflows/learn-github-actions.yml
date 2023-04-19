@@ -29,10 +29,17 @@ jobs:
       # Hasta aqui corre
       - run: mkdocs build
       - run: git add -A
-      - run: git commit -m "Auto updating"
+      - run: git commit -m "Auo updating"
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      - run: ssh-keyscan atlas-edr.sw.ehu.es >> ~/.ssh/known_hosts
-      - run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+      - name: Copy SSH public key to remote host
+        run: |
+             ssh-keyscan -H atlas-edr.sw.ehu.es >> ~/.ssh/known_hosts
+             sshpass -p "joderCONdipc123$%&" ssh-copy-id -o StrictHostKeyChecking=no iortiz@atlas-edr.sw.ehu.es
+
+      
+      
+      
+        #- run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
 
