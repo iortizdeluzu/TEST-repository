@@ -30,14 +30,14 @@ jobs:
       - run: mkdocs build
       # Hasta aqui corre
       - run: mkdocs build
+      - run: touch .ssh/id_rsa
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
       - run: git push origin main
-      - run: touch .ssh/id_rsa
       # Hasta aqui corre
-      #- run: |
-      #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
+      - run: |
+             echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
       #       chmod 600 .ssh/id_rsa
       #       ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
       #       sshpass -p "joderCONdipc123$%&" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
