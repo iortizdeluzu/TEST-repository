@@ -29,7 +29,7 @@ jobs:
       # Hasta aqui corre
       - run: mkdocs build
       - run: git add -A
-      - run: git commit -m "Auo updating"
+      - run: git commit -m "Auto updating"
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
