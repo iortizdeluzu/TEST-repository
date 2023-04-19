@@ -33,8 +33,7 @@ jobs:
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      - name: Copy SSH public key to remote host
-        run: |
+      - run: |
              ssh-keyscan -H atlas-edr.sw.ehu.es >> ~/.ssh/known_hosts
              sshpass -p "joderCONdipc123$%&" ssh-copy-id -o StrictHostKeyChecking=no iortiz@atlas-edr.sw.ehu.es
 
