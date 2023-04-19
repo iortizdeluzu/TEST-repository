@@ -34,7 +34,7 @@ jobs:
       - run: git push origin main
       # Hasta aqui corre
       - run: |
-             ssh-keyscan -H atlas-edr.sw.ehu.es >> ~/.ssh/known_hosts
+             ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
              sshpass -p "joderCONdipc123$%&" ssh-copy-id -o StrictHostKeyChecking=no iortiz@atlas-edr.sw.ehu.es
 
       
