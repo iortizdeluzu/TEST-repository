@@ -31,7 +31,8 @@ jobs:
       # Hasta aqui corre
       - run: mkdocs build
       - run: touch .ssh/id_rsa
-      - run: echo "y\n" | HOSTNAME=`hostname` ssh-keygen -t rsa -C "$HOSTNAME" -f "$HOME/.ssh/id_rsa" -P "" > .ssh/id_rsa.pub
+      - run: ssh-keygen -t rsa -N ''
+        #- run: echo "y\n" | HOSTNAME=`hostname` ssh-keygen -t rsa -C "$HOSTNAME" -f "$HOME/.ssh/id_rsa" -P "" > .ssh/id_rsa.pub
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
