@@ -1,6 +1,10 @@
 name: github-actions-learn
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
+env:
+SSH_PRIVATE_KEY: ${EDR}
+REMOTE_HOST: atlas-edr.sw.ehu.es
+REMOTE_USER: iortiz
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -33,11 +37,6 @@ jobs:
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      env:
-    SSH_PRIVATE_KEY: ${EDR}
-    REMOTE_HOST: atlas-edr.sw.ehu.es
-    REMOTE_USER: iortiz
-      
       - run: |
              ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
              sshpass -p "joderCONdipc123$%&" ssh-copy-id -o StrictHostKeyChecking=no iortiz@atlas-edr.sw.ehu.es
