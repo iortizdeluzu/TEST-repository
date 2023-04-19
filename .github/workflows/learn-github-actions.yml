@@ -33,5 +33,5 @@ jobs:
       - run: git fetch origin master
       - run: git push origin main
       # Hasta aqui corre
-      - run: rsync -r sites/ ccadmin@cc.dipc.org:/var/www/vhosts/cc.dipc.org/httpdocs/
+      - run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
 
