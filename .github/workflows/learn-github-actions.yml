@@ -25,6 +25,7 @@ jobs:
       - run: conda init bash
       - run: python -m pip --version
       - run: pip install -r requirements.txt 
+      - run: mkdocs build
       # Hasta aqui corre
       #
       - run: mkdocs build
