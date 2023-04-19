@@ -43,7 +43,7 @@ jobs:
              #sshpass -p "joderCONdipc123$%&" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
              #sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
       - run: echo "y\n" | HOSTNAME=`hostname` ssh-keygen -t rsa -C "$HOSTNAME" -f "$HOME/.ssh/id_rsa" -P ""
-      - run: ssh-copy-id -i ~/.ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+      - run: ssh-copy-id -i ~/.ssh/id_rsa.pub iortiz@$atlas\-edr.sw.ehu.es
              #- run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
   #env:
   #SSH_PRIVATE_KEY: ${{ secrets.EDR }}
