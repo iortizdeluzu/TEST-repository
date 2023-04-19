@@ -25,7 +25,8 @@ jobs:
       - run: conda init bash
       # Hasta aqui corre
 
-      - run: python -m pip --version 
+      - run: python -m pip --version
+      - run: pip install -r requirements.txt 
 
 
         #      - run: conda activate techdoci
