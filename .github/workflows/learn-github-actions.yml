@@ -21,7 +21,7 @@ jobs:
         #- run: git commit -m "Auto updating"
         #- run: git fetch origin master
         #- run: git push origin main
-      - run: apt install sshpass
+      - run: sudo apt install sshpass
       - run: pip install virtualenv
       - run: virtualenv mypython
       - run: source mypython/bin/activate
