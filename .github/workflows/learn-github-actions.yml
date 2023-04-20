@@ -60,7 +60,7 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     steps:
-      uses: matheusvanzan/sshpass-action@v2
+      - uses: matheusvanzan/sshpass-action@v2
         with:
           host: atlas-edr.sw.ehu.es
           user: iortiz
