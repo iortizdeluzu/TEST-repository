@@ -65,6 +65,5 @@ jobs:
           host: atlas-edr.sw.ehu.es
           user: iortiz
           pass: joderCONdipc123$%&
-      - run: echo $host
-      - run: echo $user
-      - run: echo $pass
+      - run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+
