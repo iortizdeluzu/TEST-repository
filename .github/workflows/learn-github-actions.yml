@@ -57,7 +57,7 @@ jobs:
   #SSH_PRIVATE_KEY: ${{ secrets.EDR }}
   #REMOTE_HOST: atlas-edr.sw.ehu.es
   #REMOTE_USER: iortiz
-  second job:
+  second-job:
     runs-on: ubuntu-latest
     steps:
       - run: echo $SSH_KEY
