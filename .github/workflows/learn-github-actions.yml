@@ -63,7 +63,7 @@ jobs:
       - name: Copy single file to remote
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: test/oof.txt
+          local: README.md
           remote: scp/single/oof.txt
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVERUSER }}
