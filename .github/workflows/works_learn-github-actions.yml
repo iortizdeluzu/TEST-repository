@@ -33,7 +33,6 @@ jobs:
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - run: ls .ssh
         #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
-      - run: ssh iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
