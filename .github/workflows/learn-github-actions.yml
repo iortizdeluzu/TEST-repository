@@ -68,4 +68,4 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
-      - run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+      - run: scp README.md ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }:/dipc/iortiz
