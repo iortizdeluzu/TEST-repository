@@ -60,4 +60,11 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $SSH_KEY
+      uses: matheusvanzan/sshpass-action@v2
+        with:
+          host: atlas-edr.sw.ehu.es
+          user: iortiz
+          pass: joderCONdipc123$%&
+      - run: echo $host
+      - run: echo $user
+      - run: echo $pass
