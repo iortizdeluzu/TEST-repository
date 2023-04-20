@@ -61,11 +61,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - name: Run sshpass commands
         uses: matheusvanzan/sshpass-action@v2
         with:
           host: ${{ secrets.SERVER_HOST }}
           user: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_KEY }}
-      - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
