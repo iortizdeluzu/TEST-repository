@@ -60,12 +60,11 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
-      - name: Run sshpass commands
-        uses: matheusvanzan/sshpass-action@v2
+      - name: Copy single file to remote
+        uses: garygrossgarten/github-action-scp@release
         with:
+          local: test/oof.txt
+          remote: scp/single/oof.txt
           host: ${{ secrets.SERVER_HOST }}
-          user: ${{ secrets.SERVER_USER }}
-          pass: ${{ secrets.SERVER_PASS }}
-      - run: scp README.md ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/dipc/iortiz
+          username: ${{ secrets.SERVERUSER }}
+          password: ${{ secrets.SERVER_PASS }}
