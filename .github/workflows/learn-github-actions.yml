@@ -28,6 +28,7 @@ jobs:
       - run: python -m pip --version
       - run: pip install -r requirements.txt 
       - run: mkdocs build
+      - run: ./decrypt_secret.sh
       - run: echo $SSH_PRIVATE_KEY
       # Hasta aqui corre
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
