@@ -21,6 +21,7 @@ jobs:
         #- run: git commit -m "Auto updating"
         #- run: git fetch origin master
         #- run: git push origin main
+      - run: apt install sshpass
       - run: pip install virtualenv
       - run: virtualenv mypython
       - run: source mypython/bin/activate
@@ -34,7 +35,7 @@ jobs:
       - run: ls .ssh
       - run: ls
         #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
-      - run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz <<< ${{ secrets.EDR }}
+      - run: shpass -p $SSH_EDR scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
