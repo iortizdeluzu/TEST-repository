@@ -11,10 +11,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-          user: iortiz
-          host: atlas-edr.sw.ehu.es
-          pass: ${{ secrets.EDR }}
-
+            #user: iortiz
+            #host: atlas-edr.sw.ehu.es
+            #pass: ${{ secrets.EDR }}
             #- run: npm install -g bats
             #- run: npm install -g conda python3
             #- run: bats -v
@@ -40,7 +39,7 @@ jobs:
       - run: ls
         #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
       - run: which sshpass
-      - run: sshpass -p $pass scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+        #- run: sshpass -p $pass scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
       - run: git add -A
       - run: git commit -m "Auto updating"
       - run: git fetch origin master
@@ -58,4 +57,8 @@ jobs:
   #SSH_PRIVATE_KEY: ${{ secrets.EDR }}
   #REMOTE_HOST: atlas-edr.sw.ehu.es
   #REMOTE_USER: iortiz
-  #
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo $SSH_KEY
