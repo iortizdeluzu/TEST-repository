@@ -68,5 +68,5 @@ jobs:
           user: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_KEY }}
           run: |
-               pwd
-              ls -lha
+            pwd
+            ls -lha
