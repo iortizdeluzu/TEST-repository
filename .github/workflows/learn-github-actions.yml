@@ -32,6 +32,7 @@ jobs:
       # Hasta aqui corre
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - run: ls .ssh
+      - run: pwd
         #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
       - run: scp -i ${{ secrets.EDR }} README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
       - run: git add -A
