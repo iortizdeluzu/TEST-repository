@@ -60,10 +60,13 @@ jobs:
   second-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: matheusvanzan/sshpass-action@v2
+      - uses: actions/checkout@v2
+      - name: Run sshpass commands
+        uses: matheusvanzan/sshpass-action@v2
         with:
-          host: atlas-edr.sw.ehu.es
-          user: iortiz
-          pass: joderCONdipc123$%&
-      - run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
-
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_KEY }}
+          run: |
+               pwd
+              ls -lha
