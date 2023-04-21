@@ -62,15 +62,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        with:
-          local: README.md
-          remote: scp/single/oof.txt
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
             #- run: scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
-      - name: Copy folder content recursively to remote
-        uses: ./
+      - uses: ./
         with:
           local: test
           remote: scp/directory
