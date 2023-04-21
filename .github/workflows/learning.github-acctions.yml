@@ -21,7 +21,7 @@ jobs:
         with:
           local: test
           remote: scp/directory
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVERUSER }}
+          password: ${{ secrets.SERVER_PASS }}
           privateKey: ${{ secrets.PRIVATE_KEY}}
