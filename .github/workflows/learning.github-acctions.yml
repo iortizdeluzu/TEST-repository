@@ -73,5 +73,5 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy with rsync
         #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
-        run: scp README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
+        run: scp ./README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
                       
