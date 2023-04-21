@@ -78,7 +78,7 @@ jobs:
         run: cp README.md README.test
       - name: key generation
         run:  ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
+      - name: ssh-keyscan
+        run:  ssh-keyscan -t rsa 158-227-108-220 >> .ssh/known_hosts
       - name: scp try
-        env: 
-          SSH_KEY: bibalabida
-        run: scp README.test iker@158.227.108.220:/home/iker <<< $SSH_KEY
+        run: scp README.test iker@158.227.108.220:/home/iker
