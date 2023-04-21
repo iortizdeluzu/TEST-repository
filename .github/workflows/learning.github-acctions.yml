@@ -79,6 +79,6 @@ jobs:
       - name: key generation
         run:  ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - name: ssh-keyscan
-        run:  ssh-keyscan -t rsa 158-227-108-220 >> .ssh/known_hosts
+        run:  ssh-keyscan -t rsa 158.227.108.220 >> .ssh/known_hosts
       - name: scp try
         run: scp README.test iker@158.227.108.220:/home/iker
