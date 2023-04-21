@@ -75,5 +75,7 @@ jobs:
         run: ip a
       - name: Deploy with rsync
         #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+        run: echo ${{ secrets.SSH_HOST }}
+      - name: ping to Iker
+        run: ping ${{ secrets.SSH_HOST }} 
                       
