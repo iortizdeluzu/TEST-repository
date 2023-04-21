@@ -82,7 +82,7 @@ jobs:
         run: ssh-keyscan -t rsa 158.227.108.220 >> .ssh/known_hosts
       - name: id_rsa.pub
         run: cat .ssh/id_rsa.pub
-      - name: cp id_rsa.pub
-        run: ssh-copy-id -i .ssh/id_rsa.pub iker@158.227.108.220
+      - name: ping
+        run: ping 158.227.108.220
           #      - name: scp try
           #        run: scp README.test iker@158.227.108.220:/home/iker
