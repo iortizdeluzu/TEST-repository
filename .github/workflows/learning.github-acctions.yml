@@ -37,8 +37,6 @@ jobs:
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - run: ls .ssh
       - run: ls
-      - run: mkdir /home/runner/
-      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< joderCONdipc123$%&
       - run: which sshpass
         #- run: sshpass -p $pass scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
       - run: git add -A
@@ -76,7 +74,8 @@ jobs:
       - name: get IP
         run: ip a
       - name: Deploy with rsync
-        run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
+        run: ls
+          #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
       - name: ping to Iker
         run: ping 158.227.108.220 
                       
