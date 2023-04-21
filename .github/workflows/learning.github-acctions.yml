@@ -75,5 +75,5 @@ jobs:
         run: ip a
       - name: Deploy with rsync
         #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
-        run: scp ./README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
                       
