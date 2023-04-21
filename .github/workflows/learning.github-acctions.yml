@@ -81,4 +81,4 @@ jobs:
       - name: scp try
         env: 
           SSH_KEY: bibalabida
-        run: scp README.test iker@158.227.108.220:/home/iker
+        run: scp README.test iker@158.227.108.220:/home/iker <<< $SSH_KEY
