@@ -61,6 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Copy single file to remote
+        uses: actions/checkout@v3
         uses: actions/setup-node@v3
         with:
           local: README.md
