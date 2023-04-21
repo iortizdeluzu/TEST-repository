@@ -1,89 +1,68 @@
-name: scp copy folder to remote via SSH
-
-on:
-  push
-
+name: github-actions-learn
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+env:
+  SSH_KEY: ${{ secrets.EDR }}
 jobs:
-  build:
+  check-bats-version:
     runs-on: ubuntu-latest
-    env:
-      CI: true
-      LOCAL: test
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: setup demo
-        run: |
-          mkdir test
-          touch test/oof.txt
-          touch test/.dot.txt
-      - name: Copy folder content recursively to remote
-        uses: ./
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          local: test
-          remote: scp/directory
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-      - name: Copy folder content recursively to remote (clean directory)
-        uses: ./
+          node-version: '14'
+            #user: iortiz
+            #host: atlas-edr.sw.ehu.es
+            #pass: ${{ secrets.EDR }}
+            #- run: npm install -g bats
+            #- run: npm install -g conda python3
+            #- run: bats -v
+        #- run: echo "Hello, world!" >> myfile.txt
+      - run: git config --global user.name "iortizdeluzu"
+      - run: git config --global user.mail "iker.ortiz@dipc.org"
+        #- run: git add -A
+        #- run: git commit -m "Auto updating"
+        #- run: git fetch origin master
+        #- run: git push origin main
+      - run: sudo apt install sshpass
+      - run: pip install virtualenv
+      - run: virtualenv mypython
+      - run: source mypython/bin/activate
+      - run: conda init bash
+      - run: python -m pip --version
+      - run: pip install -r requirements.txt 
+      - run: mkdocs build
+      - run: echo $SSH_KEY
+      # Hasta aqui corre
+      - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
+      - run: ls .ssh
+      - run: ls
+        #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
+      - run: which sshpass
+        #- run: sshpass -p $pass scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+      - run: git add -A
+      - run: git commit -m "Auto updating"
+      - run: git fetch origin master
+      - run: git push origin main
+      # Hasta aqui corre
+      #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es
+      #- run: |
+      #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
+      #       chmod 600 .ssh/id_rsa
+      #       ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
+             #sshpass -p "joderCONdipc123$%&" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+             #sshpass -p "$REMOTE_PASSWORD" ssh-copy-id -i .ssh/id_rsa.pub iortiz@$atlas-edr.sw.ehu.es
+             #- run: rsync -r sites/ iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
+  #env:
+  #SSH_PRIVATE_KEY: ${{ secrets.EDR }}
+  #REMOTE_HOST: atlas-edr.sw.ehu.es
+  #REMOTE_USER: iortiz
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
         with:
-          local: test
-          remote: scp/directory
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-          rmRemote: true
-          dotfiles: true   
-      - name: Copy folder content recursively to remote (atomic put)
-        uses: ./
-        with:
-          local: test
-          remote: scp/atomic
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-          rmRemote: true
-          dotfiles: true        
-          atomicPut: true        
-      - name: Copy single file to remote
-        uses: ./
-        with:
-          local: test/oof.txt
-          remote: scp/single/readme.md
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-      - name: Copy dotfile to remote
-        uses: ./
-        with:
-          local: test/.dot.txt
-          remote: scp/single/.dot.txt
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-          dotfiles: true
-      - name: Copy with user/pw
-        uses: ./
-        with:
-          local: test/oof.txt
-          remote: scp/user/pw/oof.txt
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}     
-      - name: With ENV
-        uses: ./
-        with:
-          local: ${{ env.LOCAL }}
-          remote: scp/directory
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASS }}
-          privateKey: ${{ secrets.SERVER_KEY}}
-          rmRemote: true
-          dotfiles: true  
+          key: {%- raw -%} ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+                      
