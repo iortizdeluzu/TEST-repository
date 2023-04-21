@@ -77,5 +77,5 @@ jobs:
         run: ls
           #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
       - name: cp test
-        run: cp README.mc README.test
+        run: cp README.md README.test
                       
