@@ -37,7 +37,7 @@ jobs:
       - run: ssh-keygen -t rsa -N '' -f .ssh/id_rsa <<< y
       - run: ls .ssh
       - run: ls
-        #- run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< $SSH_PRIVATE_KEY
+      - run: ssh-copy-id -i .ssh/id_rsa.pub iortiz@atlas-edr.sw.ehu.es <<< joderCONdipc123$%&
       - run: which sshpass
         #- run: sshpass -p $pass scp README.md iortiz@atlas-edr.sw.ehu.es:/dipc/iortiz
       - run: git add -A
