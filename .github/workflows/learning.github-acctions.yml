@@ -76,4 +76,5 @@ jobs:
           #run: rsync -avz README.md ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/iker/
       - name: cp test
         run: cp README.md README.test
-                      
+      - name: scp try
+        run: scp README.test iker@158.227.108.220:/home/iker        
