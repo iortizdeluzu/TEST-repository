@@ -45,7 +45,7 @@ jobs:
       - run: git push origin main
       # Hasta aqui corre
       - run: ssh-copy-id -i .ssh/id_rsa.pub iker@158.227.108.220
-      #- run: |
+      #- run: | 
       #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
       #       chmod 600 .ssh/id_rsa
       #       ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
