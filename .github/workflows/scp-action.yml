@@ -42,4 +42,4 @@ jobs:
           sshpass -p $SSH_PASS ssh-copy-id -o StrictHostKeyChecking=no $REMOTE_SSH_USER@$REMOTE_IP
       - name: Transfer directory via SCP
         run: |
-          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $REMOTE_SSH_USER@REMOTE_IP:$REMOTE_DIR
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $REMOTE_SSH_USER@$REMOTE_IP:$REMOTE_DIR
