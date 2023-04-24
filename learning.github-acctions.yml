@@ -18,6 +18,7 @@ jobs:
             #- run: npm install -g conda python3
             #- run: bats -v
         #- run: echo "Hello, world!" >> myfile.txt
+      - run: ping -c 1 8.8.8.8
       - run: git config --global user.name "iortizdeluzu"
       - run: git config --global user.mail "iker.ortiz@dipc.org"
         #- run: git add -A
@@ -45,7 +46,7 @@ jobs:
       - run: git push origin main
       # Hasta aqui corre
       - run: ssh-copy-id -i .ssh/id_rsa.pub iker@158.227.108.220
-      #- run: |
+      #- run: | 
       #       echo "$SSH_PRIVATE_KEY" > .ssh/id_rsa
       #       chmod 600 .ssh/id_rsa
       #       ssh-keyscan -H atlas-edr.sw.ehu.es >> .ssh/known_hosts
