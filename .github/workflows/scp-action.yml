@@ -2,7 +2,7 @@ name: actions
 run-name: Deploy docs
 on: [push]
 env:
-  SSH_PASS: ${{ secrets.SSHKEY }}
+  SSH_PASS: ${{ secrets.SSHPASS }}
   REMOTE_SSH_USER: ${{ secrets.USERNAME }}
   REMOTE_IP: ${{ secrets.HOST }}
   REMOTE_DIR: ${{ secrets.SSH_DIR }}
