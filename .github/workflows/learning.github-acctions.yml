@@ -82,7 +82,15 @@ jobs:
         run: ssh-keyscan -t rsa 158.227.108.220 >> .ssh/known_hosts
       - name: id_rsa.pub
         run: cat .ssh/id_rsa.pub
-      - name: firewall
-        run: systemctl status ufw
+      - name: SCP deploy action
+        uses: nogsantos/ssh-scp-deploy@v1.3.0
+          with:
+          src: ./README.md
+          host: ${{ secrets.SSH_HOST }}
+          remote: ${{ secrets.SSH_DIR }}
+          port: ${{ secrets.SSH_PORT }}
+          user: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+
           #      - name: scp try
           #        run: scp README.test iker@158.227.108.220:/home/iker
