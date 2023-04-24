@@ -39,7 +39,7 @@ jobs:
      
       - name: Copy SSH public key to remote server
         run: |
-          sshpass -p $SSHPASS ssh-copy-id -o StrictHostKeyChecking=no $USERNAME@$HOST
+          sshpass -p $SSH_PASS ssh-copy-id -o StrictHostKeyChecking=no $REMOTE_SSH_USER@$REMOTE_IP
       - name: Transfer directory via SCP
         run: |
-          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $USERNAME@$NAME:$SSH_DIR
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $REMOTE_SSH_USER@REMOTE_IP:$REMOTE_DIR
