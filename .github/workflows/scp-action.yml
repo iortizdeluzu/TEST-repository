@@ -30,6 +30,9 @@ jobs:
       - name: Build documentation
         run: |
           ./mkdocs/bin/mkdocs build
+      - name: ls documentation
+        run: |
+          ls
       - name: Setup SSH Key
         run: |
           ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q
