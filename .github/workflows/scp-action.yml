@@ -21,7 +21,6 @@ jobs:
         source: "./test.txt"
         target: "/home/iker/"
   remote-ssh-command:
-    build:
     name: Build
     runs-on: ubuntu-latest
     steps:
