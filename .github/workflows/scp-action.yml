@@ -1,34 +1,42 @@
-name: Deploy
-
+name: actions
+run-name: Deploy docs
 on: [push]
-
+env:
+  SSH_PASS: ${{ secrets.SSHKEY }}
+  REMOTE_SSH_USER: ${{ secrets.USERNAME }}
+  REMOTE_IP: ${{ secrets.HOST }}
+  REMOTE_DIR: ${{ secrets.SSH_DIR }}
 jobs:
-  deploy:
-
+  build:
     runs-on: ubuntu-latest
+      
     steps:
-    - uses: actions/checkout@master
-    - run: touch test.txt
-    - run: echo 'Hello World !!' >> test.txt
-    - run: ls
-    - name: Copiar el contenido del repositorio con scp
-      uses: appleboy/scp-action@master
-      with:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        source: "./test.txt"
-        target: "/home/iker/"
-  remote-ssh-command:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v0.1.10
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: whoami
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      
+      - name: Install dependencies
+        run: |
+          sudo apt install sshpass
+          pip install virtualenv
+          virtualenv mkdocs 
+          source mkdocs/bin/activate
+          pip install -r requirements.txt
+      
+      - name: Build documentation
+        run: |
+          ./mkdocs/bin/mkdocs build
+      - name: Setup SSH Key
+        run: |
+          ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q
+     
+      - name: Copy SSH public key to remote server
+        run: |
+          sshpass -p $SSH_KEY ssh-copy-id -o StrictHostKeyChecking=no $USERNAME@$HOST
+      - name: Transfer directory via SCP
+        run: |
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $USERNAME@$NAME:$SSH_DIR
