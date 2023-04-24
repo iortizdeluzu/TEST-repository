@@ -84,7 +84,7 @@ jobs:
         run: cat .ssh/id_rsa.pub
       - name: SCP deploy action
         uses: nogsantos/ssh-scp-deploy@v1.3.0
-          with:
+        with:
           src: ./README.md
           host: ${{ secrets.SSH_HOST }}
           remote: ${{ secrets.SSH_DIR }}
