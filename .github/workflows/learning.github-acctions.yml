@@ -91,5 +91,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          #      - name: scp try
+          #      - name: scp try 
           #        run: scp README.test iker@158.227.108.220:/home/iker
