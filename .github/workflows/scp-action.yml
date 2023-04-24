@@ -6,7 +6,6 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
-    environment: main < -- here 
     steps:
     - uses: actions/checkout@master
     - name: Copiar el contenido del repositorio con scp
@@ -18,5 +17,5 @@ jobs:
         KEY: ${{ secrets.SSH_KEY }}
       with:
         source: "README.md"
-        target: "home/iker/"
+        target: "/home/iker/"
         strip_components: 1
