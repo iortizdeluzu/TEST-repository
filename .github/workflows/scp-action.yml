@@ -18,3 +18,4 @@ jobs:
         source: "README.md"
         target: "/home/iker/"
         strip_components: 1
+      run: scp README.md ${USERNAME}@${HOST}
