@@ -1,4 +1,4 @@
-[![Tests](https://github.com/helmfile/helmfile/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/helmfile/helmfile/actions/workflows/ci.yaml?query=branch%3Amain)
+[![Tests](https://github.com/dipc-cc/techdoc)](https://github.com/dipc-cc/techdoc)
 
 # TEST-repository
 Repositorio de test
