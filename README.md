@@ -1,3 +1,5 @@
+[![Tests](https://github.com/helmfile/helmfile/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/helmfile/helmfile/actions/workflows/ci.yaml?query=branch%3Amain)
+
 # TEST-repository
 Repositorio de test
 
