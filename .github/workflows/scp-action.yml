@@ -27,27 +27,31 @@ jobs:
           source mkdocs/bin/activate
           pip install -r requirements.txt
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOSTATLAS }}
-          username: ${{ secrets.USERNAMEATLAS }}
-          password: ${{ secrets.SSHPASSATLAS }}
-          script: ml av siesta > /dipc/iortiz/README.md
+          #      - name: executing remote ssh commands using password
+          #          uses: appleboy/ssh-action@v1.0.3
+          #       with:
+          #         host: ${{ secrets.HOSTATLAS }}
+          #         username: ${{ secrets.USERNAMEATLAS }}
+          #         password: ${{ secrets.SSHPASSATLAS }}
+          #         script: ml av siesta > /dipc/iortiz/README.md
 
+      - name: Take software version
+        run: |
+          sshpass -p $SSHPASSATLAS ssh-copy-id -o StrictHostKeyChecking=no $USERATLAS@$HOSTATLAS "ml av siesta"
+            
       - name: Build documentation
         run: |
           ./mkdocs/bin/mkdocs build
       - name: ls documentation
         run: |
           ls
-      - name: Setup SSH Key
-        run: |
-          ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q
-     
-      - name: Copy SSH public key to remote server
-        run: |
-          sshpass -p $SSH_PASS ssh-copy-id -o StrictHostKeyChecking=no $REMOTE_SSH_USER@$REMOTE_IP
-      - name: Transfer directory via SCP
-        run: |
-          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $REMOTE_SSH_USER@$REMOTE_IP:$REMOTE_DIR
+          #     - name: Setup SSH Key
+          #       run: |
+          #         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q
+          #    
+          #     - name: Copy SSH public key to remote server
+          #       run: |
+          #         sshpass -p $SSH_PASS ssh-copy-id -o StrictHostKeyChecking=no $REMOTE_SSH_USER@$REMOTE_IP
+          #     - name: Transfer directory via SCP
+          #       run: |
+          #         scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./site $REMOTE_SSH_USER@$REMOTE_IP:$REMOTE_DIR
