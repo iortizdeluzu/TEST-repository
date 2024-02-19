@@ -36,6 +36,10 @@ jobs:
           #         script: ml av siesta > /dipc/iortiz/README.md
 
       - name: Take software version
+        with:
+          host: ${{ secrets.HOSTATLAS }}
+          username: ${{ secrets.USERNAMEATLAS }}
+          password: ${{ secrets.SSHPASSATLAS }}
         run: |
           sshpass -p $SSHPASSATLAS ssh-copy-id -o StrictHostKeyChecking=no $USERATLAS@$HOSTATLAS "ml av siesta"
             
