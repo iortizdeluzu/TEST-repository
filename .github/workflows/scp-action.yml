@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.HOSTATLAS }}
           username: ${{ secrets.USERNAMEATLAS }}
           password: ${{ secrets.SSHPASSATLAS }}
-          script: whoami
+          script: echo "Hello World!"
 
       - name: Build documentation
         run: |
