@@ -35,7 +35,11 @@ jobs:
           #         password: ${{ secrets.SSHPASSATLAS }}
           #         script: ml av siesta > /dipc/iortiz/README.md
       - name: Copy SSH key to remote server
-          run: sshpass -p ${{ secrets.SSHPASSATLAS }} ssh-copy-id -o StrictHostKeyChecking=no ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }}
+        with:
+          host: ${{ secrets.HOSTATLAS }}
+          username: ${{ secrets.USERNAMEATLAS }}
+          password: ${{ secrets.SSHPASSATLAS }}
+        run: sshpass -p ${{ secrets.SSHPASSATLAS }} ssh-copy-id -o StrictHostKeyChecking=no ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }}
 
       - name: Run command on remote server
           run: ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
