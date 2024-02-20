@@ -34,17 +34,8 @@ jobs:
           #         username: ${{ secrets.USERNAMEATLAS }}
           #         password: ${{ secrets.SSHPASSATLAS }}
           #         script: ml av siesta > /dipc/iortiz/README.md
-      - name: Copy SSH key to remote server
-        run: |
-          ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta" > siesta.txt
-
-            #      - name: Run command on remote server
-            #          run: ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
-
       - name: Commit changes
         run: |
-          # Here you would process the information obtained and make changes to the local repository
-          # For example:
           duc infor >> README.md
       - name: Build documentation
         run: |
