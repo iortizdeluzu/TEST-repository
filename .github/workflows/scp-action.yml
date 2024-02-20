@@ -45,10 +45,7 @@ jobs:
         run: |
           # Here you would process the information obtained and make changes to the local repository
           # For example:
-          echo "$(cat information.txt)" >> README.md
-          git add README.md
-          git commit -m "Update README with information obtained via SSH"
-          git push
+          duc infor >> README.md
       - name: Build documentation
         run: |
           ./mkdocs/bin/mkdocs build
