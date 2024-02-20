@@ -36,13 +36,19 @@ jobs:
           #         script: ml av siesta > /dipc/iortiz/README.md
       - name: Copy SSH key to remote server
         run: |
-          sshpass -p ${{ secrets.SSHPASSATLAS }} ssh-copy-id -o StrictHostKeyChecking=no ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }}
-          ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
+          ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta" > siesta.txt
 
             #      - name: Run command on remote server
             #          run: ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
 
-            
+      - name: Commit changes
+        run: |
+          # Here you would process the information obtained and make changes to the local repository
+          # For example:
+          echo "$(cat information.txt)" >> README.md
+          git add README.md
+          git commit -m "Update README with information obtained via SSH"
+          git push
       - name: Build documentation
         run: |
           ./mkdocs/bin/mkdocs build
