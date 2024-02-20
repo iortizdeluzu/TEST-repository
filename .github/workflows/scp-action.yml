@@ -39,7 +39,7 @@ jobs:
           host: ${{ secrets.HOSTATLAS }}
           username: ${{ secrets.USERNAMEATLAS }}
           password: ${{ secrets.SSHPASSATLAS }}i
-          run: ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
+        run: ssh ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }} "ml av siesta"
             # run: sshpass -p ${{ secrets.SSHPASSATLAS }} ssh-copy-id -o StrictHostKeyChecking=no ${{ secrets.USERNAMEATLAS }}@${{ secrets.HOSTATLAS }}
 
             #      - name: Run command on remote server
