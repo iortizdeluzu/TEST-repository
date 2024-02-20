@@ -35,6 +35,7 @@ jobs:
           #         password: ${{ secrets.SSHPASSATLAS }}
           #         script: ml av siesta > /dipc/iortiz/README.md
       - name: Copy SSH key to remote server
+        uses: actions/setup-node@v3
         with:
           host: ${{ secrets.HOSTATLAS }}
           username: ${{ secrets.USERNAMEATLAS }}
